@@ -11,4 +11,5 @@
     <!-- My Colors -->
     <color name="myDarkBlue">#191926</color>
     <color name="myPink">#FF3466</color>
+    <color name="myGray">#6D6D80</color>
 </resources>
