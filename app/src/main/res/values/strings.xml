@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">MovieApp</string>
-    <string name="pg">13+</string>
-    <string name="movieName">Avengers:\nEnd Game</string>
-    <string name="movieGenre">Action, Adventure, Fantasy</string>
-    <string name="movieAnnotation">After the devastating events of Avengers: Infinity War, the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos\' actions and restore balance to the universe.</string>
+    <string name="age_limit">13+</string>
+    <string name="movie_name">Avengers:\nEnd Game</string>
+    <string name="movie_genre">Action, Adventure, Fantasy</string>
+    <string name="movie_annotation">After the devastating events of Avengers: Infinity War, the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos\' actions and restore balance to the universe.</string>
     <string name="actor_1_name">Robert Downey Jr.</string>
     <string name="actor_2_name">Chris Evans</string>
     <string name="actor_3_name">Mark Ruffalo</string>
