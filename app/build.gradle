@@ -14,7 +14,9 @@ android {
         versionCode 1
         versionName "1.0"
     }
-
+    buildFeatures {
+        viewBinding true
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -35,4 +37,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.3.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation "androidx.fragment:fragment-ktx:1.3.2"
+    implementation group: 'ru.terrakok.cicerone', name: 'cicerone', version: '3.0.0'
+
 }

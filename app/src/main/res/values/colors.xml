@@ -12,4 +12,6 @@
     <color name="dark_blue">#191926</color>
     <color name="pink">#FF3466</color>
     <color name="light_gray">#6D6D80</color>
+    <color name="card_stroke">#636375</color>
+    <color name="card_background">#222232</color>
 </resources>

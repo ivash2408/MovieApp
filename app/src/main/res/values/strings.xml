@@ -17,4 +17,6 @@
     <string name="cast_3_text">Mark Ruffalo</string>
     <string name="cast_4_text">Chris Hemsworth</string>
     <string name="movie_list_title">Movie list</string>
+    <string name="movie_card_title">Avengers: End Game</string>
+    <string name="movie_length">137 min</string>
 </resources>
