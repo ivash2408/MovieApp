@@ -35,12 +35,12 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <View
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/bg_img_shadow"
-            app:layout_constraintStart_toStartOf="@id/movie_card_image"
-            app:layout_constraintEnd_toEndOf="@id/movie_card_image"
             app:layout_constraintBottom_toBottomOf="@id/movie_card_image"
+            app:layout_constraintEnd_toEndOf="@id/movie_card_image"
+            app:layout_constraintStart_toStartOf="@id/movie_card_image"
             app:layout_constraintTop_toTopOf="@id/movie_card_image" />
 
         <TextView
