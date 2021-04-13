@@ -5,30 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.ivash.movieapp.databinding.FragmentMovieDetailsBinding
 import com.ivash.movieapp.databinding.FragmentMoviesListBinding
 
 class FragmentMovieDetails : Fragment(R.layout.fragment_movie_details) {
-    private var _binding: FragmentMovieDetailsBinding? = null
-    private val binding get() = _binding!!
+    private val binding by viewBinding(FragmentMovieDetailsBinding::bind)
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentMovieDetailsBinding.inflate(inflater, container, false)
-
-        binding.tvBack.setOnClickListener {backToMovieList()}
-        return binding.root
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.tvBack.setOnClickListener { backToMovieList() }
     }
 
-    fun backToMovieList() {
+    private fun backToMovieList() {
         router?.exit()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }
