@@ -45,6 +45,8 @@
         app:layout_constraintStart_toEndOf="@id/guideline_start"
         app:layout_constraintTop_toTopOf="@id/movie_list_title_text" />
 
+
+
       <include
           android:id="@+id/movie_card"
           android:layout_width="170dp"
@@ -52,7 +54,7 @@
           android:layout_marginTop="27dp"
           app:layout_constraintStart_toEndOf="@id/guideline_start"
           app:layout_constraintTop_toTopOf="@id/movie_list_title_text"
-          layout="@layout/movie_card"/>
+          layout="@layout/view_holder_movie"/>
   </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
 
