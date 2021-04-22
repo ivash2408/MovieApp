@@ -11,12 +11,12 @@
     <string name="back_button_text">Back</string>
     <string name="storyline_title_text">Storyline</string>
     <string name="cast_title_text">Cast</string>
-    <string name="movie_reviews">125 Reviews</string>
+    <string name="movie_reviews">%d Reviews</string>
     <string name="cast_1_text">Robert Downey Jr.</string>
     <string name="cast_2_text">Chris Evans</string>
     <string name="cast_3_text">Mark Ruffalo</string>
     <string name="cast_4_text">Chris Hemsworth</string>
     <string name="movie_list_title">Movie list</string>
     <string name="movie_card_title">Avengers: End Game</string>
-    <string name="movie_length">137 min</string>
+    <string name="movie_length">%d min</string>
 </resources>
