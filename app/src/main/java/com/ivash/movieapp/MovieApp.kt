@@ -7,7 +7,7 @@ import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
 
-class MovieApp : Application(){
+class MovieApp : Application() {
     private val cicerone = Cicerone.create()
     val router: Router get() = cicerone.router
     val navigatorHolder: NavigatorHolder get() = cicerone.getNavigatorHolder()

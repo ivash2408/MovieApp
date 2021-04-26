@@ -4,8 +4,8 @@ import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.widget.ImageViewCompat
 import androidx.recyclerview.widget.DiffUtil
@@ -17,11 +17,15 @@ import com.ivash.movieapp.databinding.ViewHolderMovieBinding
 import com.ivash.movieapp.model.MovieData
 
 class MovieListAdapter : ListAdapter<MovieData, MovieListAdapter.ViewHolder>(DiffCallback()) {
+
+    private lateinit var mListener: ItemOnClickListener
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             LayoutInflater
-            .from(parent.context)
-            .inflate(R.layout.view_holder_movie, parent, false)
+                .from(parent.context)
+                .inflate(R.layout.view_holder_movie, parent, false),
+            mListener
         )
     }
 
@@ -30,12 +34,9 @@ class MovieListAdapter : ListAdapter<MovieData, MovieListAdapter.ViewHolder>(Dif
         holder.bind(item)
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View, var mListener: ItemOnClickListener) :
+        RecyclerView.ViewHolder(itemView), View.OnClickListener {
         private val viewHolderBinding by viewBinding(ViewHolderMovieBinding::bind)
-        private val movieImage: ImageView = viewHolderBinding.movieCardImage
-        private val likeImage: ImageView = viewHolderBinding.likeImage
-        private val ageLimitText: TextView = viewHolderBinding.ageLimitText
-        private val genreText: TextView = viewHolderBinding.movieGenreText
         private val starsImages: List<ImageView> = listOf(
             viewHolderBinding.ratingStar1Image,
             viewHolderBinding.ratingStar2Image,
@@ -43,19 +44,20 @@ class MovieListAdapter : ListAdapter<MovieData, MovieListAdapter.ViewHolder>(Dif
             viewHolderBinding.ratingStar4Image,
             viewHolderBinding.ratingStar5Image
         )
-        private val reviewsText: TextView = viewHolderBinding.movieCardReviewsText
-        private val movieTitle: TextView = viewHolderBinding.movieCardTitle
-        private val movieLength: TextView = viewHolderBinding.movieLength
+
+        init {
+            itemView.setOnClickListener(this)
+        }
 
         fun bind(movieData: MovieData) {
 
-            movieImage.setImageResource(movieData.image)
-            ageLimitText.text = movieData.ageLimit.toString()
+            viewHolderBinding.movieCardImage.setImageResource(movieData.image)
+            viewHolderBinding.ageLimitText.text = itemView.context.getString(R.string.age_limit, movieData.ageLimit)
 
             val likeColor = if (movieData.isLiked) R.color.pink else R.color.white
             ImageViewCompat.setImageTintList(
-                likeImage, ColorStateList.valueOf(
-                    ContextCompat.getColor(likeImage.context, likeColor)
+                viewHolderBinding.likeImage, ColorStateList.valueOf(
+                    ContextCompat.getColor(viewHolderBinding.likeImage.context, likeColor)
                 )
             )
 
@@ -68,12 +70,16 @@ class MovieListAdapter : ListAdapter<MovieData, MovieListAdapter.ViewHolder>(Dif
                 )
             }
 
-            genreText.text = movieData.genre
-            reviewsText.text =
+            viewHolderBinding.movieGenreText.text = movieData.genre
+            viewHolderBinding.movieCardReviewsText.text =
                 itemView.context.getString(R.string.movie_reviews, movieData.reviewsCount)
-            movieTitle.text = movieData.title
-            movieLength.text =
+            viewHolderBinding.movieCardTitle.text = movieData.title
+            viewHolderBinding.movieLength.text =
                 itemView.context.getString(R.string.movie_length, movieData.movieLength)
+        }
+
+        override fun onClick(v: View?) {
+            mListener.itemOnClick(absoluteAdapterPosition)
         }
     }
 
@@ -85,5 +91,13 @@ class MovieListAdapter : ListAdapter<MovieData, MovieListAdapter.ViewHolder>(Dif
         override fun areContentsTheSame(oldItem: MovieData, newItem: MovieData): Boolean {
             return oldItem == newItem
         }
+    }
+
+    fun setOnItemClickListener(mListener: ItemOnClickListener) {
+        this.mListener = mListener
+    }
+
+    interface ItemOnClickListener {
+        fun itemOnClick(position: Int)
     }
 }
