@@ -24,17 +24,19 @@ class MovieListAdapter(private val onClick: (MovieData) -> Unit) :
             LayoutInflater
                 .from(parent.context)
                 .inflate(R.layout.view_holder_movie, parent, false),
+            onClick
         )
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
-        holder.bind(item, onClick)
+        holder.bind(item)
     }
 
-    class ViewHolder(itemView: View) :
+    class ViewHolder(itemView: View, itemOnClick: (MovieData) -> Unit) :
         RecyclerView.ViewHolder(itemView) {
         private val viewHolderBinding by viewBinding(ViewHolderMovieBinding::bind)
+        private var movieItem: MovieData? = null
         private val starsImages: List<ImageView> = listOf(
             viewHolderBinding.ratingStar1Image,
             viewHolderBinding.ratingStar2Image,
@@ -43,8 +45,12 @@ class MovieListAdapter(private val onClick: (MovieData) -> Unit) :
             viewHolderBinding.ratingStar5Image
         )
 
-        fun bind(movieData: MovieData, onClick: (MovieData) -> Unit) {
+        init {
+            itemView.setOnClickListener { movieItem?.let { nonNullMovie -> itemOnClick(nonNullMovie) } }
+        }
 
+        fun bind(movieData: MovieData) {
+            this.movieItem = movieData
             viewHolderBinding.movieCardImage.setImageResource(movieData.imageResId)
             viewHolderBinding.ageLimitText.text =
                 itemView.context.getString(R.string.age_limit, movieData.ageLimit)
@@ -74,16 +80,15 @@ class MovieListAdapter(private val onClick: (MovieData) -> Unit) :
             viewHolderBinding.movieCardTitle.text = movieData.title
             viewHolderBinding.movieLength.text =
                 itemView.context.getString(R.string.movie_length, movieData.movieLength)
-            itemView.setOnClickListener { onClick(movieData) }
         }
     }
 
     private class DiffCallback : DiffUtil.ItemCallback<MovieData>() {
         override fun areItemsTheSame(oldItem: MovieData, newItem: MovieData): Boolean =
-            oldItem.title == newItem.title
+            (oldItem.title == newItem.title)
 
 
         override fun areContentsTheSame(oldItem: MovieData, newItem: MovieData): Boolean =
-            oldItem == newItem
+            (oldItem == newItem)
     }
 }

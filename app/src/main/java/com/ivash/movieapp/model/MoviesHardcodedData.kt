@@ -5,44 +5,44 @@ import com.ivash.movieapp.R
 object MoviesHardcodedData {
     fun getMoviesData(): List<MovieData> = arrayListOf(
         MovieData(
-            R.drawable.movie_card_img,
-            13,
-            false,
-            "Action, Adventure, Drama",
-            4,
-            125,
-            "Avengers: End game",
-            137
+            imageResId = R.drawable.movie_card_img,
+            ageLimit = 13,
+            isLiked = false,
+            genre = "Action, Adventure, Drama",
+            rating = 4,
+            reviewsCount = 125,
+            title = "Avengers: End game",
+            movieLength = 137
         ),
         MovieData(
-            R.drawable.tenet,
-            16,
-            true,
-            "Action, Sci-Fi, Thriller",
-            5,
-            98,
-            "Tenet",
-            97
+            imageResId = R.drawable.tenet,
+            ageLimit = 16,
+            isLiked = true,
+            genre = "Action, Sci-Fi, Thriller",
+            rating = 5,
+            reviewsCount = 98,
+            title = "Tenet",
+            movieLength = 97
         ),
         MovieData(
-            R.drawable.black_widow,
-            13,
-            false,
-            "Action, Adventure, Sci-Fi",
-            4,
-            38,
-            "Black Widow",
-            102
+            imageResId = R.drawable.black_widow,
+            ageLimit = 13,
+            isLiked = false,
+            genre = "Action, Adventure, Sci-Fi",
+            rating = 4,
+            reviewsCount = 38,
+            title = "Black Widow",
+            movieLength = 102
         ),
         MovieData(
-            R.drawable.ww84,
-            13,
-            false,
-            "Action, Adventure, Fantasy",
-            5,
-            74,
-            "Wonder Woman 1984",
-            120
+            imageResId = R.drawable.ww84,
+            ageLimit = 13,
+            isLiked = false,
+            genre = "Action, Adventure, Fantasy",
+            rating = 5,
+            reviewsCount = 74,
+            title = "Wonder Woman 1984",
+            movieLength = 120
         )
     )
 }

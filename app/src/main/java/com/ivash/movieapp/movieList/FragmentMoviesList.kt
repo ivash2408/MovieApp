@@ -17,10 +17,8 @@ class FragmentMoviesList : Fragment(R.layout.fragment_movies_list) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var spanCount = 2;
-        context?.resources?.displayMetrics?.run {
-            spanCount = widthPixels / densityDpi
-        }
+        val spanCount: Int = context?.resources?.displayMetrics?.let {
+            (it.widthPixels / it.densityDpi) } ?: 2
         binding.recycler.layoutManager = GridLayoutManager(this.context, spanCount)
         val customAdapter = MovieListAdapter { movieData ->
             openMovieDescription(movieData)

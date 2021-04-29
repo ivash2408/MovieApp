@@ -5,20 +5,20 @@ import com.ivash.movieapp.R
 object ActorsHardcodedData {
     fun getActorsData(): List<ActorData> = arrayListOf(
         ActorData(
-            "Robert Downey Jr",
-            R.drawable.robert_downey
+            name = "Robert Downey Jr",
+            actorPhotoResId = R.drawable.robert_downey
         ),
         ActorData(
-            "Chris Evans",
-            R.drawable.evans
+            name = "Chris Evans",
+            actorPhotoResId = R.drawable.evans
         ),
         ActorData(
-            "Mark Ruffalo",
-            R.drawable.ruffalo
+            name = "Mark Ruffalo",
+            actorPhotoResId = R.drawable.ruffalo
         ),
         ActorData(
-            "Chris Hemsworth",
-            R.drawable.hemsworth
+            name = "Chris Hemsworth",
+            actorPhotoResId = R.drawable.hemsworth
         )
     )
 }

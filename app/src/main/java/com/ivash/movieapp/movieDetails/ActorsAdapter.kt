@@ -38,12 +38,12 @@ class ActorsAdapter() : ListAdapter<ActorData, ActorsAdapter.ViewHolder>(DiffCal
     }
 
     class DiffCallback : DiffUtil.ItemCallback<ActorData>() {
-        override fun areItemsTheSame(oldItem: ActorData, newItem: ActorData): Boolean {
-            return oldItem.name == newItem.name
-        }
+        override fun areItemsTheSame(oldItem: ActorData, newItem: ActorData): Boolean =
+            (oldItem.name == newItem.name)
 
-        override fun areContentsTheSame(oldItem: ActorData, newItem: ActorData): Boolean {
-            return oldItem == newItem
-        }
+
+        override fun areContentsTheSame(oldItem: ActorData, newItem: ActorData): Boolean =
+            (oldItem == newItem)
+
     }
 }
