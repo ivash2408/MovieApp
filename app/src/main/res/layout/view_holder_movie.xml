@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="296dp"
     android:layout_margin="5dp"
-    app:cardCornerRadius="5dp"
-    tools:layout_width="170dp">
+    app:cardCornerRadius="5dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -55,8 +54,8 @@
             android:gravity="center"
             android:text="@string/age_limit"
             android:textColor="@color/white"
-            android:textStyle="bold"
             android:textSize="12sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/movie_card_guideline_start"
             app:layout_constraintTop_toTopOf="parent" />
 

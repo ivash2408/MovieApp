@@ -1,7 +1,10 @@
 package com.ivash.movieapp.model
 
+import androidx.annotation.DrawableRes
+
 data class MovieData(
-     val image: Int,
+     @DrawableRes
+     val imageResId: Int,
      val ageLimit: Int,
      val isLiked: Boolean,
      val genre: String,

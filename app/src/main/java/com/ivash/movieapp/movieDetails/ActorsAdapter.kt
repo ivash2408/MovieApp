@@ -11,13 +11,14 @@ import com.ivash.movieapp.R
 import com.ivash.movieapp.databinding.ViewHolderActorBinding
 import com.ivash.movieapp.model.ActorData
 
-class ActorsAdapter : ListAdapter<ActorData, ActorsAdapter.ViewHolder>(DiffCallback()) {
+class ActorsAdapter() : ListAdapter<ActorData, ActorsAdapter.ViewHolder>(DiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(
-            LayoutInflater
-                .from(parent.context)
-                .inflate(R.layout.view_holder_actor, parent, false)
-        )
+        val view = LayoutInflater
+            .from(parent.context)
+            .inflate(R.layout.view_holder_actor, parent, false)
+        val width = parent.measuredWidth / 4
+        view.layoutParams.width = width
+        return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -32,7 +33,7 @@ class ActorsAdapter : ListAdapter<ActorData, ActorsAdapter.ViewHolder>(DiffCallb
 
         fun bind(actorData: ActorData) {
             viewHolderBinding.castText.text = actorData.name
-            viewHolderBinding.castImage.setImageResource(actorData.actorPhoto)
+            viewHolderBinding.castImage.setImageResource(actorData.actorPhotoResId)
         }
     }
 

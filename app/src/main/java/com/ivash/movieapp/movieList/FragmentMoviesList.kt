@@ -8,6 +8,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.ivash.movieapp.R
 import com.ivash.movieapp.Screens
 import com.ivash.movieapp.databinding.FragmentMoviesListBinding
+import com.ivash.movieapp.model.MovieData
 import com.ivash.movieapp.model.MoviesHardcodedData
 import com.ivash.movieapp.router
 
@@ -16,22 +17,21 @@ class FragmentMoviesList : Fragment(R.layout.fragment_movies_list) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.recycler.layoutManager = GridLayoutManager(this.context, 2)
-        val customAdapter = MovieListAdapter()
-        customAdapter.setOnItemClickListener(object : MovieListAdapter.ItemOnClickListener {
-            override fun itemOnClick(position: Int) {
-                openMovieDescription()
-            }
-        })
+        var spanCount = 2;
+        context?.resources?.displayMetrics?.run {
+            spanCount = widthPixels / densityDpi
+        }
+        binding.recycler.layoutManager = GridLayoutManager(this.context, spanCount)
+        val customAdapter = MovieListAdapter { movieData ->
+            openMovieDescription(movieData)
+        }
         binding.recycler.adapter = customAdapter
         customAdapter.submitList(MoviesHardcodedData.getMoviesData())
     }
 
-    private fun openMovieDescription() {
+    private fun openMovieDescription(movieData: MovieData) {
         router?.navigateTo(Screens.MovieDesctiptionFragment())
-        println("It used")
     }
-
 
     companion object {
         fun newInstance(): FragmentMoviesList = FragmentMoviesList()

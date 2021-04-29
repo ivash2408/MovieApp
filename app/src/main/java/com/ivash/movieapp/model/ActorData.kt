@@ -1,6 +1,9 @@
 package com.ivash.movieapp.model
 
+import androidx.annotation.DrawableRes
+
 data class ActorData(
     val name: String,
-    val actorPhoto: Int,
+    @DrawableRes
+    val actorPhotoResId: Int,
 )

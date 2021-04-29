@@ -1,6 +1,7 @@
 package com.ivash.movieapp.movieDetails
 
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,14 +18,8 @@ class FragmentMovieDetails : Fragment(R.layout.fragment_movie_details) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.tvBack.setOnClickListener { backToMovieList() }
-
         binding.actorsContainer.layoutManager =
-            object : LinearLayoutManager(this.context, RecyclerView.HORIZONTAL, false) {
-                override fun checkLayoutParams(lp: RecyclerView.LayoutParams?): Boolean {
-                    lp?.width = width / 4
-                    return true
-                }
-            }
+            LinearLayoutManager(this.context, RecyclerView.HORIZONTAL, false)
         val customAdapter = ActorsAdapter()
         binding.actorsContainer.adapter = customAdapter
         customAdapter.submitList(ActorsHardcodedData.getActorsData())
