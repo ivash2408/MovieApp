@@ -24,7 +24,6 @@ class MovieListAdapter(private val onClick: (MovieData) -> Unit) :
             LayoutInflater
                 .from(parent.context)
                 .inflate(R.layout.view_holder_movie, parent, false),
-            onClick
         )
     }
 
@@ -33,7 +32,7 @@ class MovieListAdapter(private val onClick: (MovieData) -> Unit) :
         holder.bind(item, onClick)
     }
 
-    class ViewHolder(itemView: View, onClick: (MovieData) -> Unit) :
+    class ViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
         private val viewHolderBinding by viewBinding(ViewHolderMovieBinding::bind)
         private val starsImages: List<ImageView> = listOf(
